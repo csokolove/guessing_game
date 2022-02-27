@@ -19,7 +19,10 @@ fn main() { // create main function (program entry point)
             .read_line(&mut guess) // read the input, and store the value in the mutable variable "guess"
             .expect("Failed to read line"); // if program errors, "expect" will crash the program with the error "Failed to read line"
     
-        let guess: u32 = guess.trim().parse().expect("Please type a number!"); // eliminate whitespace in the value & see if the value inputted is a number (u32). "parse()" parses a string into a number
+        let guess: u32 = match guess.trim().parse() { // eliminate whitespace in the value & see if the value inputted is a number (u32). "parse()" parses a string into a number
+            Ok(num) => num, // if it is, set guess to num
+            Err(_) => continue, // if its not, continue on the loop
+        }; // guess
     
         println!("You guessed: {}", guess); // outputs "You guessed: ", followed by the value of "guess"
                             // similar to Python, {} serves as a placeholder and takes on the value of the positional parameter (ex. first {} in a string receives the value of the first value passed after the string)
