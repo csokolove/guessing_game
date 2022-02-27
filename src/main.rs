@@ -1,7 +1,12 @@
-use std::io; // obtain io rust library
+use std::io; // obtain io rust module
+use rand::Rng; // obtain Rng rust module
 
 fn main() { // create main function (program entry point)
     println!("Guess the number!"); // outputs "Guess the number!"
+    
+    let secret_number = rand::thread_rng().gen_range(1..100); // declare variable "secret_number", and assign it a random value between 1, inclusive, and 100, exclusive.
+                                                  // this is a range expression (ex. start..end) where the lower bound is inclusive, however the upper bound is exclusive (ex. 1..100) will only return a number between 1 & 99
+                                                  // ...to make both inclusive, change the syntax to "..=" (ex. 1..=100) will return a number between 1 & 100, inclusive
     println!("Please input your guess."); // outputs "Please input your guess."
 
     let mut guess = String::new(); // declare variable "guess", and make it mutable (adaptable) of type String
