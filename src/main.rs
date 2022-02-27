@@ -27,12 +27,14 @@ fn main() { // create main function (program entry point)
         match guess.cmp(&secret_number) { // compare 2 values (guess & secret_number)
             Ordering::Less => println!("Too small!"), // if guess is less than secret_number, output "Too small!"
             Ordering::Greater => println!("Too big!"), // if guess is greater than secret_number, output "Too big!"
-            Ordering::Equal => println!("You win!") // if guess is equal to secret_number, output "You win!"
+            Ordering::Equal => {
+                println!("You win!"); // if guess is equal to secret_number, output "You win!"
+                break; // break out of the loop when correct
+            } // Equal
         } // match
     } // loop
 } // main()
 
-// If the program is run, the secret number is 24, and 4 is inputted by the user, the program should read:
+// If the program is run, the secret number is 24, and 4 is inputted by the user, the program should return:
     // "You guessed: 4"
     // "Too small!"
-// (program will not quit)
